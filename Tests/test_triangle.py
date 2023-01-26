@@ -32,8 +32,7 @@ class TestTriangle:
         triangle_page.write_side_three("6")
         triangle_page.click_identify_button()
         assert "Equilateral" == triangle_page.get_result_text()
-        
-    @pytest.mark.wipp    
+          
     def test_invalid_triangle(self,triangle_page):
         triangle_page.open_app_page()
         triangle_page.write_side_one("5")
