@@ -21,7 +21,7 @@ class PageCalculator(BasePage):
         self.type_element(self.input_num2, num2)
 
     def select_calculate_operation(self, op_name):
-        self.select_dropbox_by_text(self.select_calc_op, op_name)
+        self.select_dropbox_by_visible_text(self.select_calc_op, op_name)
 
     def click_calculate_button(self):
         self.click_element(self.btn_calculate)
