@@ -1,5 +1,13 @@
 # selenium_pytest_POM
+
 it is a Page Object Model framework template to automate Web UI test through Selenium Webdriver library, written in Python and using pytest
+
+To pull repo, install git:
+https://git-scm.com/downloads
+select item that regarding your OS
+
+Install Python:
+https://www.python.org/downloads/
 
 To install plugins:
 
