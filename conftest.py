@@ -3,6 +3,7 @@ from selenium import webdriver
 from appium import webdriver as mobile_driver
 from appium.options.common import AppiumOptions
 from pytest import fixture, mark
+import pytest
 
 
 def pytest_addoption(parser):
@@ -55,7 +56,7 @@ def driver(platform, browser):
 
 
 # to add screenshot for failed steps
-@mark.hookwrapper
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
@@ -67,4 +68,4 @@ def pytest_runtest_makereport(item, call):
             mydriver = item.funcargs['driver']
             screenshot = mydriver.get_screenshot_as_base64()
             extra.append(pytest_html.extras.image(screenshot, ''))
-    report.extra = extra
+    report.extras = extra
