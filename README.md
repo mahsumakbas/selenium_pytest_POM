@@ -17,6 +17,9 @@ to run test, go to main folder and run pytest:
 
     pytest --html=reports/report.htm --reruns 2 -n 4 --platform mobile|web --browser chrome|firefox
 
+Note: in some CI/CD cases, pytest cannot be recognazied as PATH command, so need to run as `python` module
+`python -m pytest`
+
 parametres:
 `--html` : to produce execution result file
 
