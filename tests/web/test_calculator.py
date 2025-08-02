@@ -2,10 +2,10 @@ from pages.page_calculator import PageCalculator
 import pytest
 
 @pytest.fixture
-def calc_page(driver):
-    cp = PageCalculator(driver)
-    return cp
+def calc_page(driver) -> PageCalculator:
+    return PageCalculator(driver)
 
+@pytest.mark.web
 class TestCalculator:
 
     def test_addition_positive_integers(self, calc_page):

@@ -130,3 +130,11 @@ dmypy.json
 
 # vs code
 .vscode/
+
+# OS specific
+**/.DS_Store
+Thumbs.db
+
+#project specific
+reports/
+

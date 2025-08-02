@@ -1,11 +1,9 @@
 from pages.page_triangle import PageTriangle
 import pytest
-import time
 
 @pytest.fixture
-def triangle_page(driver):
-    tp = PageTriangle(driver)
-    return tp
+def triangle_page(driver) -> PageTriangle:
+    return PageTriangle(driver)
 
 class TestTriangle:
 

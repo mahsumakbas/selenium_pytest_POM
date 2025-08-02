@@ -1,4 +1,5 @@
 from wrappers.base_page import BasePage
+from selenium.webdriver.common.by import By
 
 
 class PageCalculator(BasePage):
@@ -6,6 +7,7 @@ class PageCalculator(BasePage):
     def __init__(self, set_driver):
         super().__init__(set_driver)
 
+    link_calc_app_tuple = (By.XPATH, "//a[@id='calculatetest']")
     link_calc_app = "//a[@id='calculatetest']"
     btn_calculate = "//input[@id='calculate']"
     input_num1 = "//input[@id='number1']"
@@ -14,7 +16,9 @@ class PageCalculator(BasePage):
     text_answer = "//span[@id='answer']"
 
     def open_app_page(self):
-        self.click_element(self.link_calc_app)
+        # print("Opening calculator app page with following information: "
+        #       f"Platform: {self.driver.test_platform}, Browser: {self.driver.test_browser}")
+        self.click_element_two(self.link_calc_app_tuple)
         self.wait_for_element_to_be_visible(self.btn_calculate)
 
     def write_numbers(self, num1, num2):
