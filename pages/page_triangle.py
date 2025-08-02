@@ -3,7 +3,7 @@ from wrappers.base_page import BasePage
 class PageTriangle(BasePage):
 
     def __init__(self, set_driver):
-        super().__init__(set_driver)
+        super().__init__(set_driver, homepage_url="qa")
 
     link_triangle_app = "//a[@id='triangleapp']"
     btn_identify_type = "//button[@id='identify-triangle-action']"

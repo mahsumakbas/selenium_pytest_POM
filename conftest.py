@@ -80,11 +80,10 @@ def driver(platform, browser):
         drvr.implicitly_wait(30)
     else:
         raise UsageError("Please enter a valid value for --platform (web/mobile)")
-    drvr.implicitly_wait(5)
+    drvr.implicitly_wait(30)
     drvr.set_page_load_timeout(30)
     drvr.set_script_timeout(30)
     drvr.maximize_window()
-    drvr.get("https://testpages.herokuapp.com/styled/index.html")
     
     # Attach metadata to driver
     #setattr(drvr, "test_platform", platform)

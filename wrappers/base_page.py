@@ -3,12 +3,20 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from config.urls import URLS
 
 
 class BasePage():
-    def __init__(self, set_driver) -> None:
+    def __init__(self, set_driver, homepage_url: str = None) -> None:
         self.driver = set_driver
         self.DEFAULT_WAIT_TIMEOUT = 30
+        self.go_to(homepage_url)
+
+    def go_to(self, homepage_url: str):
+        url = URLS.get(homepage_url)
+        if not url:
+            raise ValueError(f"No URL found for key: {homepage_url}")
+        self.driver.get(url)
 
     def _wait(self, timeout=None):
         return WebDriverWait(self.driver, timeout or self.DEFAULT_WAIT_TIMEOUT)
@@ -20,6 +28,7 @@ class BasePage():
 
     def _find_element(self, locator: tuple[By, str]) -> WebElement:
         return  self.driver.find_element(*locator)
+
 
     def click_element_two(self, locator: tuple):
         self._find_element(locator).click()

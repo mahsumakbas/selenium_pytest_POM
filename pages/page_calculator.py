@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 class PageCalculator(BasePage):
 
     def __init__(self, set_driver):
-        super().__init__(set_driver)
+        super().__init__(set_driver, homepage_url="qa")
 
     link_calc_app_tuple = (By.XPATH, "//a[@id='calculatetest']")
     link_calc_app = "//a[@id='calculatetest']"
