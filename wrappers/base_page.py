@@ -10,8 +10,9 @@ class BasePage():
     def __init__(self, set_driver, homepage_url: str = None) -> None:
         self.driver = set_driver
         self.DEFAULT_WAIT_TIMEOUT = 30
-        self.go_to(homepage_url)
-
+        if homepage_url:
+            self.go_to(homepage_url)
+        
     def go_to(self, homepage_url: str):
         url = URLS.get(homepage_url)
         if not url:

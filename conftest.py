@@ -6,6 +6,9 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from pytest import fixture
 import pytest
 from _pytest.config import UsageError
+import os
+
+
 
 VALID_PLATFORMS = {"web", "mobile"}
 VALID_BROWSERS = {"chrome", "firefox"}
@@ -69,22 +72,26 @@ def driver(platform, browser):
             drvr = webdriver.Firefox(options=options)
         else:
             raise UsageError("Please enter a valid value for --browser (chrome/firefox)")
+            drvr.implicitly_wait(30)
+        drvr.set_page_load_timeout(30)
+        drvr.set_script_timeout(30)
+        drvr.maximize_window()
     elif platform == "mobile":
         options = AppiumOptions()
+        #apk_path = os.path.abspath('./files/app-release.apk')
+        #print("APK Path:", apk_path)
         options.set_capability('platformName', 'Android')
-        options.set_capability('platformVersion', '10.2')
-        options.set_capability('newCommandTimeout', '60')
-        options.set_capability('automationName', 'UiAutomator2')
+        #options.set_capability('platformVersion', '10.2')
+        options.set_capability('appium:newCommandTimeout', '60')
+        options.set_capability('appium:automationName', 'UiAutomator2')
+        #options.set_capability("appium:app", apk_path)
+        options.set_capability('appPackage', 'com.testpine.app')
+        options.set_capability('appActivity', 'com.testpine.app.MainActivity')
         drvr = mobile_driver.Remote(
-            command_executor='http://localhost:4723/wd/hub', options=options)
+            command_executor='http://localhost:4723', options=options)
         drvr.implicitly_wait(30)
     else:
         raise UsageError("Please enter a valid value for --platform (web/mobile)")
-    drvr.implicitly_wait(30)
-    drvr.set_page_load_timeout(30)
-    drvr.set_script_timeout(30)
-    drvr.maximize_window()
-    
     # Attach metadata to driver
     #setattr(drvr, "test_platform", platform)
     #setattr(drvr, "test_browser", browser)
