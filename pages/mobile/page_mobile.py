@@ -17,9 +17,8 @@ class PageMobile(BasePage):
 
     def allow_notification_permission(self):
         print("Allowing notification permission")
-        self.click_element_two(self.btn_allow_notification_permission)
+        self.click_element(self.btn_allow_notification_permission)
 
     def deny_notification_permission(self):
         print("Denying notification permission")
-        self.click_element_two(self.btn_deny_notification_permission)
-   
+        self.click_element(self.btn_deny_notification_permission)

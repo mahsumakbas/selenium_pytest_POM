@@ -1,4 +1,4 @@
-from pages.page_triangle import PageTriangle
+from pages.web.page_triangle import PageTriangle
 import pytest
 
 @pytest.fixture

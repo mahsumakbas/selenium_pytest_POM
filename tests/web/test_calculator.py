@@ -1,4 +1,4 @@
-from pages.page_calculator import PageCalculator
+from pages.web.page_calculator import PageCalculator
 import pytest
 
 @pytest.fixture

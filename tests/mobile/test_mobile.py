@@ -1,4 +1,4 @@
-from pages.page_mobile import PageMobile
+from pages.mobile.page_mobile import PageMobile
 import pytest
 
 @pytest.fixture

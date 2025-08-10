@@ -1,16 +1,18 @@
+from time import sleep
 from wrappers.base_page import BasePage
+from selenium.webdriver.common.by import By
 
 class PageTriangle(BasePage):
 
     def __init__(self, set_driver):
         super().__init__(set_driver, homepage_url="qa")
 
-    link_triangle_app = "//a[@id='triangleapp']"
-    btn_identify_type = "//button[@id='identify-triangle-action']"
-    input_side1 = "//input[@id='side1']"
-    input_side2 = "//input[@id='side2']"
-    input_side3 = "//input[@id='side3']"
-    text_result = "//p[@id='triangle-type']"
+    link_triangle_app = (By.XPATH, "//a[@id='triangleapp']")
+    btn_identify_type = (By.XPATH, "//button[@id='identify-triangle-action']")
+    input_side1 = (By.XPATH, "//input[@id='side1']")
+    input_side2 = (By.XPATH, "//input[@id='side2']")
+    input_side3 = (By.XPATH, "//input[@id='side3']")
+    text_result = (By.XPATH, "//p[@id='triangle-type']")
 
     def open_app_page(self):
         self.click_element(self.link_triangle_app)
@@ -29,5 +31,6 @@ class PageTriangle(BasePage):
         self.click_element(self.btn_identify_type)
 
     def get_result_text(self):
+        sleep(1)  # Wait for the result to be displayed
         result = self.get_element_text(self.text_result)
         return result

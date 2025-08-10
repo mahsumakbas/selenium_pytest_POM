@@ -138,3 +138,70 @@ Specify it explicitly with `--sdk_root=<your_android_sdk_path>` parameter:
 ```bash
 sdkmanager --sdk_root=<your_android_sdk_path> --list
 ```
+
+## ADB commands
+ADB (Android Debug Bridge) is a versatile command-line tool that lets you communicate with an emulator instance or connected Android device. It provides a variety of device management features, including installing and debugging apps, copying files, and running shell commands.
+You can use ADB to interact with your Android device or emulator. Here are some common ADB commands:
+```bash
+adb devices # List connected devices
+adb install <path_to_apk> # Install an APK on the device
+adb uninstall <package_name> # Uninstall an app from the device
+adb shell # Open a shell on the device
+adb logcat # View the device log
+adb pull <remote_path> <local_path> # Copy a file from the device to the local machine
+adb push <local_path> <remote_path> # Copy a file from the local machine to the device
+adb reboot # Reboot the device
+adb shell pm list packages # List installed packages on the device
+adb shell am start -n <package_name>/<activity_name> # Start an activity in an app "com.testpine.app/.MainActivity" 
+adb shell input text "<text>" # Simulate text input on the device
+adb shell input keyevent <keycode> # Simulate a key event on the device
+adb shell input tap <x> <y> # Simulate a tap at the specified coordinates
+adb shell input swipe <x1> <y1> <x2> <y2> # Simulate a swipe gesture
+adb shell dumpsys activity | grep "mFocusedActivity" # Get the currently focused activity
+``` 
+### ADB Shell commands
+ADB shell commands allow you to execute commands directly on the Android device or emulator. Here are some common ADB shell commands:
+```bash
+adb shell pm list packages # List all installed packages on the device
+adb shell pm path <package_name> # Get the path of a specific package
+adb shell am start -n <package_name>/<activity_name> # Start an activity in an app
+adb shell am force-stop <package_name> # Force stop an app
+adb shell am broadcast -a <action_name> # Send a broadcast intent
+adb shell input text "<text>" # Simulate text input on the device
+adb shell input keyevent <keycode> # Simulate a key event on the device
+adb shell input tap <x> <y> # Simulate a tap at the specified coordinates
+adb shell input swipe <x1> <y1> <x2> <y2> # Simulate a swipe gesture
+adb shell dumpsys activity | grep "mFocusedActivity" # Get the currently focused activity
+adb shell getprop # List all system properties
+adb shell getprop <property_name> # Get the value of a specific system property
+adb shell setprop <property_name> <value> # Set a system property
+adb shell pm clear <package_name> # Clear the data of an app
+adb shell pm grant <package_name> <permission> # Grant a permission to an app
+adb shell pm revoke <package_name> <permission> # Revoke a permission from an app
+adb shell screencap -p /sdcard/screenshot.png # Take a screenshot and save it to the device
+adb shell screenrecord /sdcard/video.mp4 # Record the screen and save it to the device
+adb shell dumpsys package <package_name> # Get detailed information about a specific package
+adb shell dumpsys activity activities | grep "mFocusedActivity" # Get the currently focused activity
+adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp' # Get the currently focused window
+adb shell dumpsys window displays | grep -E 'mCurrentFocus|mFocusedApp' # Get the currently focused window
+adb shell dumpsys input | grep "mInputDevices" # List input devices
+adb shell dumpsys input | grep "mInputDevice" # Get detailed information about input devices
+adb shell dumpsys battery # Get battery status and information
+adb shell dumpsys connectivity # Get network connectivity status
+adb shell dumpsys meminfo <package_name> # Get memory usage information for a specific package
+adb shell dumpsys cpuinfo # Get CPU usage information
+adb shell dumpsys gfxinfo <package_name> # Get graphics rendering information for a specific package
+adb shell dumpsys activity recents # Get recent tasks and activities
+adb shell dumpsys activity top # Get information about the top activity
+adb shell dumpsys activity services # Get information about running services
+adb shell dumpsys activity broadcasts # Get information about active broadcasts
+adb shell dumpsys activity providers # Get information about content providers
+adb shell dumpsys activity intents # Get information about active intents
+adb shell dumpsys activity processes # Get information about running processes
+adb shell dumpsys activity alarms # Get information about active alarms
+adb shell dumpsys activity content # Get information about content providers
+adb shell dumpsys activity task # Get information about tasks and activities
+adb shell dumpsys activity task-ids # Get information about task IDs
+adb shell dumpsys activity task-activity # Get information about tasks and activities
+adb shell dumpsys activity task-stack # Get information about task stacks
+adb shell dumpsys activity task-activity-stack # Get information about task activity stacks
