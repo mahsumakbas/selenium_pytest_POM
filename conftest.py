@@ -72,7 +72,6 @@ def driver(platform, browser):
             drvr = webdriver.Firefox(options=options)
         else:
             raise UsageError("Please enter a valid value for --browser (chrome/firefox)")
-            drvr.implicitly_wait(30)
         drvr.set_page_load_timeout(30)
         drvr.set_script_timeout(30)
         drvr.maximize_window()
@@ -89,12 +88,13 @@ def driver(platform, browser):
         options.set_capability('appActivity', 'com.testpine.app.MainActivity')
         drvr = mobile_driver.Remote(
             command_executor='http://localhost:4723', options=options)
-        drvr.implicitly_wait(30)
+        
     else:
         raise UsageError("Please enter a valid value for --platform (web/mobile)")
     # Attach metadata to driver
     #setattr(drvr, "test_platform", platform)
     #setattr(drvr, "test_browser", browser)
+    drvr.implicitly_wait(30)
     yield drvr
     drvr.quit()
 
