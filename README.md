@@ -40,12 +40,29 @@ or install it via npm:
 npm install -g appium
 ```
 
+Check which Appium drivers are installed:
+```bash
+appium driver list
+```
+
+To install additional drivers, use the following command:
+```bash
+appium driver install <driver_name>
+```
+
+for example, to install the UiAutomator2 driver for Android:
+```bash
+appium driver install uiautomator2
+```
+
 To start Appium server, run the following command in your terminal:
 ```bash
 appium
 ``` 
 ## Mobile testing with Android
-To run mobile tests, you need to have Android SDK installed and configured on your machine. 
+To run mobile tests, you need to have Android SDK installed and configured on your machine.
+
+P.S. You need to have Java JDK installed as well, since Android SDK depends on it. Add JAVA_HOME environment variable to your shell configuration file pointing to your JDK installation path.
 
 ### download and install Android SDK via Homebrew for macOS
 install it via Homebrew on macOS:
@@ -71,7 +88,6 @@ Create `latest` directory in cmdline-tools directory and then, move the extracte
 mkdir -p $ANDROID_HOME/cmdline-tools/latest
 ```
 
-```bash
 add that directory to your PATH:
 ```bash
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
